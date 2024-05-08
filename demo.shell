@@ -1,0 +1,6 @@
+
+echo "Welcome to the shell terminal"
+name="Pranjal"
+age=24
+
+echo "name is $name and age is $age"

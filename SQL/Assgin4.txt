@@ -1,0 +1,68 @@
+Assignment 4: Write SQL statements to CREATE a new database and tables that reflect the library schema you designed earlier. Use ALTER statements to modify the table structures and DROP statements to remove a redundant table.
+
+1. CREATE DATABASE:
+
+
+CREATE DATABASE Library;
+
+
+This statement creates a new database named "Library".
+
+2. CREATE TABLES:
+
+Here's an example assuming your schema has three tables: Books, Authors, and Borrowers:
+
+Books Table:
+
+CREATE TABLE Books (
+book_id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(255) NOT NULL,
+isbn VARCHAR(13) UNIQUE,
+publication_year INT,
+author_id INT,
+FOREIGN KEY (author_id) REFERENCES Authors(author_id)
+);
+
+
+This creates a "Books" table with columns for book ID (auto-incrementing primary key), title, ISBN (unique identifier), publication year, and a foreign key referencing the author ID in the "Authors" table.
+
+Authors Table:
+
+CREATE TABLE Authors (
+author_id INT PRIMARY KEY AUTO_INCREMENT,
+first_name VARCHAR(100) NOT NULL,
+last_name VARCHAR(100) NOT NULL
+);
+
+
+This creates an "Authors" table with author ID (auto-incrementing primary key), first name, and last name.
+
+Borrowers Table (Example):
+
+CREATE TABLE Borrowers (
+borrower_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+email VARCHAR(100) UNIQUE
+);
+
+
+This creates a "Borrowers" table with borrower ID (auto-incrementing primary key), name, and a unique email address.
+
+3. ALTER TABLE:
+
+Let's say you decide to add a "genre" column to the Books table:
+
+ALTER TABLE Books ADD COLUMN genre VARCHAR(100);
+
+
+This statement modifies the "Books" table by adding a new column named "genre" with a data type of VARCHAR(100).
+
+4. DROP TABLE:
+
+If you discover a redundant table, like "Categories" for books, you can remove it:
+
+
+DROP TABLE Categories;
+
+
+This statement permanently deletes the "Categories" table from the database.

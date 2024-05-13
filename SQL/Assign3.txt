@@ -1,0 +1,30 @@
+Assignment 3: Compose SQL statements to BEGIN a transaction, INSERT a new record into the 'orders' table, COMMIT the transaction, then UPDATE the 'products' table, and ROLLBACK the transaction.
+
+Here are the SQl statements for the above task:
+
+1: BEGIN a transaction:
+
+BEGIN TRANSACTION;
+
+2: INSERT a new record into the 'orders' table:
+
+INSERT INTO orders (order_id, customer_id, order_date, total_amount)
+VALUES (12345, 'ABC123', '2024-05-10', 500.00);
+
+3: COMMIT the transaction:
+
+COMMIT;
+
+4: UPDATE the 'products' table:
+
+UPDATE products
+SET stock_quantity = stock_quantity - 1
+WHERE product_id = 'P001';
+
+
+5: ROLLBACK the transaction:
+
+ROLLBACK;
+
+
+

@@ -1,0 +1,4 @@
+use training;
+show tables;
+
+grant select on student to 'root@localhost';

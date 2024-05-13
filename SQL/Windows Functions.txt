@@ -1,0 +1,24 @@
+use training;
+
+select dept , max(salary) from employee group by(dept);
+
+select id, name, dept, max(salary) from employee group by(dept); /* gives error */
+
+select id, name, dept, sum(salary) over (partition by dept) from employee;
+
+/* row number*/
+
+select id, name , dept, salary from employee order by salary;
+
+select id, name , dept, salary, row_number() over(order by salary desc) as num  from employee;
+
+/* find the 5th highest salary*/
+
+select * from (select id, name , dept, salary, row_number() over(order by salary desc) as num  from employee) as temptable where num = 5;
+
+
+select id, name , dept, salary, row_number() over(partition by dept order by salary desc) as num  from employee;
+
+/* select 2nd highest salary from each department*/
+
+select * from (select id, name , dept, salary, row_number() over(partition by dept order by salary desc) as num  from employee) as temptable where num = 2;

@@ -1,0 +1,23 @@
+create table student
+(
+id int,
+name varchar(30),
+subject varchar(30),
+marks int
+);
+
+insert into student values(1, 'Pranjal', 'Physics', 98);
+insert into student values(2, 'Pranjal', 'Chemistry', 95);
+insert into student values(3, 'Pranjal', 'Maths', 98);
+insert into student values(4, 'Rahul', 'Physics', 92);
+insert into student values(5, 'Rahul', 'Chemistry', 89);
+insert into student values(6, 'Rahul', 'Maths', 91);
+insert into student values(7, 'Sachin', 'Physics', 82);
+insert into student values(8, 'Sachin', 'Chemistry', 85);
+insert into student values(9, 'Rahul', 'Maths', 99);
+update student set name = 'Sachin' where id = 9;
+select * from student;
+
+select id, name, subject, marks, dense_rank() over(partition by subject order by marks desc) from student;
+
+select id, name, subject, marks, rank() over(partition by subject order by marks desc) from student;

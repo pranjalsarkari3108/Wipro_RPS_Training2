@@ -1,0 +1,35 @@
+use training;
+set autocommit = 0;
+select * from employee;
+insert into employee values(7, 'Ankit', 'Admin', 46000.78, 28, '1992-01-14', '2024-01-15');
+savepoint a ;
+insert into employee values(8, 'Ramit', 'IT', 96000.78, 29, '1993-01-14', '2024-01-15');
+savepoint b;
+rollback;
+rollback to a;
+
+/*Transaction*/
+start transaction;
+insert into employee values(9, 'bob', 'ceo', '60000.45', 28, '1993-10-11', '2024-02-20');
+update employee set dept = 'manager' where id = 9 and age > 25;
+savepoint update_dept;
+rollback to update_dept;
+rollback;
+
+release savepoint update_dept;
+
+
+
+
+
+
+
+create view empview as 
+select id , name , age from employee where age >25;
+select * from empview;
+
+/*Index*/
+
+create index nameindex on employee(name);
+
+select * from employee where name = 'Rahul';
